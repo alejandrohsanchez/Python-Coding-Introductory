@@ -44,6 +44,9 @@ def enterInput(player, C, board):
     elif (C == 9):
         board[24] = player
 
+def checkWin(board):
+    
+
 def startGame(origin, board):
     print('Player 1 (X) vs Player 2 (O)')
     
@@ -54,6 +57,8 @@ def startGame(origin, board):
         else:
             choice = int(input('Player 2: '))
             enterInput(' O ', choice, board)
+        
+        checkWin(board)
         
         printBoard(origin, board)
 
