@@ -25,52 +25,99 @@ def printBoard(origin, board):
     print()
 
 def enterInput(player, C, board):
-    if (C == 1):
+    if (C <= 0 or C >= 10):
+        print('Incorrect input, please enter a number 1 - 9')
+        return 0
+
+    if (C == 1 and board[0] == '   '):
         board[0] = player
-    elif (C == 2):
+        return 1
+    elif (C == 2 and board[2] == '   '):
         board[2] = player
-    elif (C == 3):
+        return 1
+    elif (C == 3 and board[4] == '   '):
         board[4] = player
-    elif (C == 4):
+        return 1
+    elif (C == 4 and board[10] == '   '):
         board[10] = player
-    elif (C == 5):
+        return 1
+    elif (C == 5 and board[12] == '   '):
         board[12] = player
-    elif (C == 6):
+        return 1
+    elif (C == 6 and board[14] == '   '):
         board[14] = player
-    elif (C == 7):
+        return 1
+    elif (C == 7 and board[20] == '   '):
         board[20] = player
-    elif (C == 8):
+        return 1
+    elif (C == 8 and board[22] == '   '):
         board[22] = player
-    elif (C == 9):
+        return 1
+    elif (C == 9 and board[24] == '   '):
         board[24] = player
+        return 1
+    else:
+        print('Tile is already taken, please try again.')
+        return 0
 
 def checkWin(board):
-    if (board[0] == board[2] and board[2] == board[4]):
+    if (board[0] != '   ' and board[2] != '   ' and board[4] != '   ' and board[0] == board[2] and board[2] == board[4]):
         return True
-    elif (board[10] == board[12] and board[12] == board[14]):
+    elif (board[10] != '   ' and board[12] != '   ' and board[14] != '   ' and board[10] == board[12] and board[12] == board[14]):
         return True
-    elif (board[20] == board[22] and board[22] == board[24]):
+    elif (board[20] != '   ' and board[22] != '   ' and board[24] != '   ' and board[20] == board[22] and board[22] == board[24]):
         return True
-    elif (board[0] == board[10] and board[10] == board[20]):
+    elif (board[0] != '   ' and board[10] != '   ' and board[20] != '   ' and board[0] == board[10] and board[10] == board[20]):
         return True
-    elif (board[2] == board[12] and board[12] == board[22]):
+    elif (board[2] != '   ' and board[12] != '   ' and board[22] != '   ' and board[2] == board[12] and board[12] == board[22]):
         return True
-    elif (board[4] == board[14] and board[14] == board[24]):
+    elif (board[4] != '   ' and board[14] != '   ' and board[24] != '   ' and board[4] == board[14] and board[14] == board[24]):
         return True
+    elif (board[0] != '   ' and board[12] != '   ' and board[24] != '   ' and board[0] == board[12] and board[12] == board[24]):
+        return True
+    elif (board[4] != '   ' and board[12] != '   ' and board[20] != '   ' and board[4] == board[12] and board[12] == board[20]):
+        return True
+    else:
+        return False
 
 def startGame(origin, board):
     print('Player 1 (X) vs Player 2 (O)')
-    win = False
     for i in range(9):
+        check = False
+        win = False
         if (i % 2 == 0):
-            choice = int(input('Player 1: '))
-            enterInput(' X ', choice, board)
-            
+            while (check == False):
+                choice = int(input('Player 1: '))
+                # Enter the player input if the tile is available
+                if (enterInput(' X ', choice, board)):
+                    # Check if the player has won
+                    check = True
+                    if (checkWin(board)):
+                        win = True
+                        printBoard(origin, board)
+                        print('Player 1 wins!')
+                        break
+                    printBoard(origin, board)
+            if (win):
+                break            
+
         else:
-            choice = int(input('Player 2: '))
-            enterInput(' O ', choice, board)
-        
+            while (check == False):
+                choice = int(input('Player 2: '))
+                if (enterInput(' O ', choice, board)):
+                    check = True
+                    if (checkWin(board)):
+                        win = True
+                        printBoard(origin, board)
+                        print('Player 2 wins!')
+                        break
+                    printBoard(origin, board)
+            if (win):
+                break
+
         printBoard(origin, board)
+        if (i == 8 and win == False):
+            print('No winner...')
 
 origin = [' 1 ', " | ", " 2 ", " | ", " 3 ", "---", "-|-", "---", "-|-", "---", " 4 ", " | ", " 5 ", " | ", " 6 ", "---", "-|-", "---", "-|-", "---", " 7 ", " | ", " 8 ", " | ", " 9 "]
 board = ['   ', " | ", "   ", " | ", "   ", "---", "-|-", "---", "-|-", "---", "   ", " | ", "   ", " | ", "   ", "---", "-|-", "---", "-|-", "---", "   ", " | ", "   ", " | ", "   "]
