@@ -45,20 +45,30 @@ def enterInput(player, C, board):
         board[24] = player
 
 def checkWin(board):
-    
+    if (board[0] == board[2] and board[2] == board[4]):
+        return True
+    elif (board[10] == board[12] and board[12] == board[14]):
+        return True
+    elif (board[20] == board[22] and board[22] == board[24]):
+        return True
+    elif (board[0] == board[10] and board[10] == board[20]):
+        return True
+    elif (board[2] == board[12] and board[12] == board[22]):
+        return True
+    elif (board[4] == board[14] and board[14] == board[24]):
+        return True
 
 def startGame(origin, board):
     print('Player 1 (X) vs Player 2 (O)')
-    
+    win = False
     for i in range(9):
         if (i % 2 == 0):
             choice = int(input('Player 1: '))
             enterInput(' X ', choice, board)
+            
         else:
             choice = int(input('Player 2: '))
             enterInput(' O ', choice, board)
-        
-        checkWin(board)
         
         printBoard(origin, board)
 
