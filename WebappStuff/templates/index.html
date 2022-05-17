@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <!-- This is a comment -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    </head>
+    <body>
+        <h1>This is a header</h1>
+        <h2>About me</h2>
+            <p>My name is NightRaven</p>
+            <p>My favorite color is blue</p>
+            
+        <h2>Things I do for fun</h2>
+            <p>I like to drum.</p>
+            <p>I like to play video games.</p>
+            
+        <p>Below is an unordered list of colors</p>
+        <ul>
+            <li>Red</li>
+            <li>Orange</li>
+            <li>Yellow</li>
+        </ul>
+        
+        <p>Below is an ordered list of colors</p>
+        <ol>
+            <li>Red</li>
+            <li>Orange</li>
+            <li>Yellow</li>
+        </ol>
+
+        <h2>Type anything in the text box below</h2>
+        
+        <form action="http://127.0.0.1:5000/printText" method="POST">
+            <input type="text" name="textField"></input>
+            <button type="submit" name="submitButton" value="firstLast">Alex</button>
+        </form>
+
+        <h2>Enter your First and Last name below</h2>
+        <!-- 'type' means what kind of element 'input' will be. -->
+        <!-- 'text' means that the input will be a text box. -->
+        <!-- 'submit' means that we will go to the URL specified in 'form action' -->
+        <form action="http://127.0.0.1:5000/printText" method="POST">
+            <input type="text" name="firstName" placeholder="First Name"></input>
+            <input type="text" name="lastName" placeholder="Last Name"></input>
+            <button type="submit" name="submitButton" value="credentials">Submit</button>
+        </form>
+
+    </body>
+</html>
