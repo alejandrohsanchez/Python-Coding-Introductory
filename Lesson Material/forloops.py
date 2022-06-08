@@ -6,9 +6,10 @@ Created on Sat Jun  5 17:23:01 2021
 """
 import matplotlib.pyplot as plt
 
+"""
+commenting old code
 fruitlist = ['banana', 'orange', 'apple', 'watermelon']
 
-"""
 print(fruitlist)
 # for loop
 for x in fruitlist:
@@ -20,7 +21,6 @@ for x in fruitlist:
 for x in range(1,11):
     print(x)
 
-"""
 
 x = []
 y = []
@@ -43,3 +43,33 @@ plt.plot(x,y)
 
 plt.show()
 plt.plot(x,z)
+
+"""
+
+"""
+# This will continue printing '1' until we tell it to stop.
+# Intro to while loop:
+
+while (True):
+    print("1")
+    ans = input("Continue? (y for yes, n for no) ")
+    
+    # If the user enters the letter 'n', the while loop will stop.
+    if (ans == 'n'):
+        break
+"""
+
+"""
+# This will continue adding numbers.
+sum = 0
+while (True):
+    number = int(input("Enter a number: "))
+    sum = sum + number
+    print("Your number is", sum)
+    
+    ans = input("Continue? (y for yes, n for no) ")
+    if (ans == 'n'):
+        print("Your final sum is:", sum)
+        break
+"""    
+
